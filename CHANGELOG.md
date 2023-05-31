@@ -1,3 +1,7 @@
+## [1.0.5](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.4...v1.0.5) (2023-05-31)
+
+
+
 ## [1.0.4](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.3...v1.0.4) (2023-05-31)
 
 
