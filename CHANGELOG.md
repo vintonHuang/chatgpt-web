@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.3...v1.0.4) (2023-05-31)
+
+
+### Features
+
+* 🎸 设置跑起来的版本号 ([dd18a5e](https://github.com/vintonHuang/chatgpt-web/commit/dd18a5eb8aeddc078a269d1c7b6f701bbe72a6d3))
+
+
+
 ## [1.0.3](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.2...v1.0.3) (2023-05-31)
 
 
