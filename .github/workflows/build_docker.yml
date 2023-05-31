@@ -29,7 +29,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ccr.ccs.tencentyun.com/huangwentao/frontend:${{ vars.PROJECT_NAME }}-${{ steps.extract_tag.outputs.tag }}
+          tags: uswccr.ccs.tencentyun.com/vinton/frontend:${{ vars.PROJECT_NAME }}-${{ steps.extract_tag.outputs.tag }}
 
       - name: ssh docker login # 登陆云服务器
         uses: garygrossgarten/github-action-ssh@release
