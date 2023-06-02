@@ -16,7 +16,7 @@ const dataSources = computed(() => chatStore.history)
 async function handleSelect({ uuid }: Chat.History) {
   if (isActive(uuid))
     return
-
+  // 如果当前选择的处于编辑的状态的，选择另外的聊天框，需要重置一下当前的chat
   if (chatStore.active)
     chatStore.updateHistory(chatStore.active, { isEdit: false })
   await chatStore.setActive(uuid)

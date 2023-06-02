@@ -88,7 +88,7 @@ async function onConversation() {
 
   if (lastContext && usingContext.value)
     options = { ...lastContext }
-
+  // 添加一行聊天内容使得对方有一个空行立马出来
   addChat(
     +uuid,
     {
@@ -101,6 +101,7 @@ async function onConversation() {
       requestOptions: { prompt: message, options: { ...options } },
     },
   )
+  // 滚动到底部
   scrollToBottom()
 
   try {
@@ -502,7 +503,7 @@ onUnmounted(() => {
                   <template #icon>
                     <SvgIcon icon="ri:stop-circle-line" />
                   </template>
-									{{ t('common.stopResponding') }}
+                  {{ t('common.stopResponding') }}
                 </NButton>
               </div>
             </div>
