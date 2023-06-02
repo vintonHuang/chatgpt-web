@@ -1,3 +1,13 @@
+## [1.0.6](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.5...v1.0.6) (2023-06-02)
+
+
+### Features
+
+* 🎸 1.新增chat-web的项目的注释 2.把环境变量的open_key 删除测试 ([1ca67e2](https://github.com/vintonHuang/chatgpt-web/commit/1ca67e23e89267b3b4d0c0918e6cede2c335284a))
+* 🎸 格式化 ([e123b87](https://github.com/vintonHuang/chatgpt-web/commit/e123b8777a16e8b8fafff83b4ee662e3268127e3))
+
+
+
 ## [1.0.5](https://github.com/vintonHuang/chatgpt-web/compare/v1.0.4...v1.0.5) (2023-05-31)
 
 
