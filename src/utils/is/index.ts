@@ -1,3 +1,8 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 export function isNumber<T extends number>(value: T | unknown): value is number {
   return Object.prototype.toString.call(value) === '[object Number]'
 }
@@ -52,4 +57,9 @@ export function isMap<T extends Map<any, any>>(value: T | unknown): value is T {
 
 export function isFile<T extends File>(value: T | unknown): value is T {
   return Object.prototype.toString.call(value) === '[object File]'
+}
+
+export function isPhoneNumber<T extends string>(value: T | number): boolean {
+  const myreg = /^[1][3,4,5,7,8][0-9]{9}$/
+  return myreg.test(value.toString())
 }

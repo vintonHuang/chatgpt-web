@@ -1,13 +1,17 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 import axios, { type AxiosResponse } from 'axios'
 import { useAuthStore } from '@/store'
-
-const service = axios.create({
-  baseURL: import.meta.env.VITE_GLOB_API_URL,
-})
+import { getBaseUrl } from '@/utils/functions/index'
+const service = axios.create()
 
 service.interceptors.request.use(
   (config) => {
     const token = useAuthStore().token
+    config.baseURL = getBaseUrl(config.url as string)
     if (token)
       config.headers.Authorization = `Bearer ${token}`
     return config
