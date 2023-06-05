@@ -15,7 +15,7 @@ export function getCurrentDate() {
 export function getBaseUrl(url: string) {
   let baseUrl
   Object.keys(baseUrlApi).forEach((key) => {
-    if (baseUrlApi[key].includes(url))
+    if (baseUrlApi[key as keyof typeof baseUrlApi].includes(url))
       baseUrl = key
   })
   return baseUrl
