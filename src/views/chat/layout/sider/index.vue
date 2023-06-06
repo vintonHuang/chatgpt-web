@@ -6,7 +6,7 @@
 <script setup lang='ts'>
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
-import { NButton, NLayoutSider } from 'naive-ui'
+import { NButton, NLayoutSider, useNotification } from 'naive-ui'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
@@ -15,7 +15,7 @@ import { PromptStore } from '@/components/common'
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
-
+const notification = useNotification()
 const { isMobile } = useBasicLayout()
 const show = ref(false)
 
@@ -29,6 +29,14 @@ function handleAdd() {
 
 function handleUpdateCollapsed() {
   appStore.setSiderCollapsed(!collapsed.value)
+}
+
+function handlePluginStore() {
+  notification.warning({
+    title: '插件商店',
+    content: '插件内容正在开发中,尽情期待',
+    duration: 2000,
+  })
 }
 
 const getMobileClass = computed<CSSProperties>(() => {
@@ -84,9 +92,12 @@ watch(
         <div class="flex-1 min-h-0 pb-4 overflow-hidden">
           <List />
         </div>
-        <div class="p-4">
-          <NButton block @click="show = true">
+        <div class="p-4 flex justify-around">
+          <NButton @click="show = true">
             {{ $t('store.siderButton') }}
+          </NButton>
+          <NButton class="mt-1" @click="handlePluginStore">
+            插件商店
           </NButton>
         </div>
       </main>
