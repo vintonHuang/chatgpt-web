@@ -1,5 +1,10 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 import { computed } from 'vue'
-import { enUS, koKR, zhCN, zhTW } from 'naive-ui'
+import { enUS, zhCN, zhTW } from 'naive-ui'
 import { useAppStore } from '@/store'
 import { setLocale } from '@/locales'
 
@@ -11,12 +16,6 @@ export function useLanguage() {
       case 'en-US':
         setLocale('en-US')
         return enUS
-      case 'ru-RU':
-        setLocale('ru-RU')
-        return enUS
-      case 'ko-KR':
-        setLocale('ko-KR')
-        return koKR
       case 'zh-CN':
         setLocale('zh-CN')
         return zhCN
