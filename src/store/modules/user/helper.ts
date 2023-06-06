@@ -11,6 +11,10 @@ export interface UserInfo {
   avatar: string
   name: string
   description: string
+  phone: string
+  role: string
+  tmp_count: number
+  user_name: string
 }
 
 export interface UserState {
@@ -23,6 +27,10 @@ export function defaultSetting(): UserState {
       avatar: 'https://raw.githubusercontent.com/Chanzhaoyu/chatgpt-web/main/src/assets/avatar.jpg',
       name: 'AI chatBot',
       description: 'By gpt-3.5-turbo',
+      phone: '',
+      role: '',
+      tmp_count: 0,
+      user_name: '',
     },
   }
 }

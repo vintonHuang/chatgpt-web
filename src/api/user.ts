@@ -16,3 +16,9 @@ export function login<T>(data: ILoginParams) {
     data,
   })
 }
+
+export function getUesInfo<T>() {
+  return post<T>({
+    url: '/user/info',
+  })
+}

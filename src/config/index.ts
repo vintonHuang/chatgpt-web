@@ -5,7 +5,7 @@
  */
 const baseUrlApi = {
   '/api': ['/chat', '/config', '/chat-process', '/session'],
-  '/backend': ['/user/login', '/user/sms_code'],
+  '/backend': ['/user/login', '/user/sms_code', '/user/info'],
 }
 
 export {

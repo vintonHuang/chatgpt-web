@@ -1,6 +1,13 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 import { defineStore } from 'pinia'
 import type { UserInfo, UserState } from './helper'
 import { defaultSetting, getLocalState, setLocalState } from './helper'
+import { getUesInfo } from '@/api/user'
+import { store } from '@/store'
 
 export const useUserStore = defineStore('user-store', {
   state: (): UserState => getLocalState(),
@@ -8,6 +15,11 @@ export const useUserStore = defineStore('user-store', {
     updateUserInfo(userInfo: Partial<UserInfo>) {
       this.userInfo = { ...this.userInfo, ...userInfo }
       this.recordState()
+    },
+    // 获取用户信息的接口
+    async getUserInfo() {
+      const { data } = await getUesInfo<UserInfo>()
+      this.updateUserInfo(data)
     },
 
     resetUserInfo() {
@@ -20,3 +32,7 @@ export const useUserStore = defineStore('user-store', {
     },
   },
 })
+
+export function useUserStoreWithOut() {
+  return useUserStore(store)
+}

@@ -9,7 +9,7 @@ import type { CountdownInst, CountdownProps } from 'naive-ui'
 import { NButton, NCountdown, NIcon, NInput, NModal, useMessage } from 'naive-ui'
 import { PhonePortraitOutline, ReturnUpForwardOutline, Rocket } from '@vicons/ionicons5'
 import { getSMScode, login } from '@/api/user'
-import { useAuthStore } from '@/store'
+import { useAuthStore, useUserStore } from '@/store'
 import Icon403 from '@/icons/403.vue'
 import { isPhoneNumber } from '@/utils/is'
 interface Props {
@@ -40,6 +40,8 @@ async function handleVerify() {
     })
     authStore.setToken(data.token)
     ms.success('登录成功')
+    // 获取用户信息
+    useUserStore().getUserInfo()
   }
   catch (error: any) {
     ms.error(error.message ?? 'error')
