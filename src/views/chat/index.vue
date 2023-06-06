@@ -480,9 +480,12 @@ onUnmounted(() => {
           :class="[isMobile ? 'p-2' : 'p-4']"
         >
           <template v-if="!dataSources.length">
-            <div class="flex items-center justify-center mt-4 text-center text-neutral-300">
+            <div class="flex items-center justify-center mt-4 text-cente">
               <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" />
-              <span>Aha~</span>
+              <p>
+                禁止发布、传播任何违法、违规内容，使用本网站，视您接受并同意 <a target="_blank" style="color:#006eff;" href="https://docs.qq.com/doc/DVFdaY1lvWHFSWU5w">《免责声明》</a>
+              </p>
+              <p>Copyright © 2023</p>
             </div>
           </template>
           <template v-else>

@@ -4,6 +4,7 @@
  * @Description: file content
  */
 import type { AxiosProgressEvent, AxiosResponse, GenericAbortSignal } from 'axios'
+import { useMessage } from 'naive-ui'
 import request from './axios'
 import { useAuthStore } from '@/store'
 
@@ -35,7 +36,7 @@ function http<T = any>(
 
     if (res.data.status === 401)
       authStore.removeToken()
-      // window.location.reload()
+    useMessage().error('用户登录过期，请重新登录')
     return Promise.reject(res.data)
   }
 

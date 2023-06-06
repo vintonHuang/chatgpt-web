@@ -78,7 +78,7 @@ const handleFinish = () => {
       <div class="space-y-4">
         <header class="space-y-2">
           <h2 class="text-2xl font-bold text-center text-slate-800 dark:text-neutral-200">
-            用户登录
+            欢迎来到AI🤖️世界👏👏👏
           </h2>
           <Icon403 class="w-[200px] m-auto" />
         </header>
