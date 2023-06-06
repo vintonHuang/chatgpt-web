@@ -50,7 +50,7 @@ onMounted(() => {
         Version - {{ pkg.version }}
       </h2>
       <p>{{ $t("setting.api") }}：{{ config?.apiModel ?? '-' }}</p>
-      <p v-if="isChatGPTAPI">
+      <p>
         {{ $t("setting.monthlyUsage") }}：{{ config?.usage ?? '-' }}
       </p>
       <p v-if="!isChatGPTAPI">
