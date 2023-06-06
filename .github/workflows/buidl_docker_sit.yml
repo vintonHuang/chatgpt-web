@@ -1,4 +1,4 @@
-name: Build and Deploy chatgpt-web
+name: Build and Deploy chatgpt-web SIT
 on:
   push:
     branches:
