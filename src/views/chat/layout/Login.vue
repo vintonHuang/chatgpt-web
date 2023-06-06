@@ -4,12 +4,11 @@
  * @Description: file content
 -->
 <script setup lang='ts'>
-import { computed, ref } from 'vue'
+import { computed, ref, unref } from 'vue'
 import type { CountdownInst, CountdownProps } from 'naive-ui'
 import { NButton, NCountdown, NIcon, NInput, NModal, useMessage } from 'naive-ui'
 import { PhonePortraitOutline, ReturnUpForwardOutline, Rocket } from '@vicons/ionicons5'
-import { fetchVerify } from '@/api'
-import { getSMScode } from '@/api/user'
+import { getSMScode, login } from '@/api/user'
 import { useAuthStore } from '@/store'
 import Icon403 from '@/icons/403.vue'
 import { isPhoneNumber } from '@/utils/is'
@@ -29,22 +28,22 @@ const code = ref('')
 const disabled = computed(() => !phoneNum.value.trim() || loading.value || !code.value.trim())
 
 async function handleVerify() {
-  const secretKey = phoneNum.value.trim()
-
-  if (!secretKey)
+  if (!isPhoneNumber(phoneNum.value)) {
+    ms.error('请输入正确格式的手机号码')
     return
-
+  }
   try {
     loading.value = true
-    await fetchVerify(secretKey)
-    authStore.setToken(secretKey)
-    ms.success('success')
-    window.location.reload()
+    const { data } = await login<{ expire: string; token: string }>({
+      phone: unref(phoneNum),
+      sms: unref(code),
+    })
+    authStore.setToken(data.token)
+    ms.success('登录成功')
   }
   catch (error: any) {
     ms.error(error.message ?? 'error')
     authStore.removeToken()
-    phoneNum.value = ''
   }
   finally {
     loading.value = false
@@ -59,9 +58,8 @@ async function handleSendSms() {
   }
   if (!active.value) {
     active.value = true
-    const { status } = await getSMScode(phoneNum.value)
-    if (status === 'Success')
-      ms.success('发送成功')
+    await getSMScode(phoneNum.value)
+    ms.success('验证码发送成功')
   }
 }
 // 渲染倒计时

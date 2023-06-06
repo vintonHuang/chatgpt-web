@@ -1,3 +1,8 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 import type { AxiosProgressEvent, AxiosResponse, GenericAbortSignal } from 'axios'
 import request from './axios'
 import { useAuthStore } from '@/store'
@@ -16,7 +21,7 @@ export interface HttpOption {
 export interface Response<T = any> {
   data: T
   message: string | null
-  status: string
+  status: number
 }
 
 function http<T = any>(
@@ -25,14 +30,12 @@ function http<T = any>(
   const successHandler = (res: AxiosResponse<Response<T>>) => {
     const authStore = useAuthStore()
 
-    if (res.data.status === 'Success' || typeof res.data === 'string')
+    if (res.data.status === 200 || typeof res.data === 'string')
       return res.data
 
-    if (res.data.status === 'Unauthorized') {
+    if (res.data.status === 401)
       authStore.removeToken()
-      window.location.reload()
-    }
-
+      // window.location.reload()
     return Promise.reject(res.data)
   }
 
