@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import type { Ref } from 'vue'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, unref } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { NAutoComplete, NButton, NInput, useDialog, useMessage } from 'naive-ui'
@@ -10,10 +10,12 @@ import { useScroll } from './hooks/useScroll'
 import { useChat } from './hooks/useChat'
 import { useUsingContext } from './hooks/useUsingContext'
 import HeaderComponent from './components/Header/index.vue'
+import Payment from './components/Payment/index.vue'
 import { HoverButton, SvgIcon } from '@/components/common'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { useChatStore, usePromptStore } from '@/store'
+import { useChatStore, usePromptStore, useUserStore } from '@/store'
 import { fetchChatAPIProcess } from '@/api'
+import { UserPermissionConfig } from '@/config'
 import { t } from '@/locales'
 
 let controller = new AbortController()
@@ -25,6 +27,7 @@ const dialog = useDialog()
 const ms = useMessage()
 
 const chatStore = useChatStore()
+const { userInfo } = storeToRefs(useUserStore())
 
 const { isMobile } = useBasicLayout()
 const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
@@ -39,6 +42,7 @@ const conversationList = computed(() => dataSources.value.filter(item => (!item.
 const prompt = ref<string>('')
 const loading = ref<boolean>(false)
 const inputRef = ref<Ref | null>(null)
+const showPayment = ref(false)
 
 // 添加PromptStore
 const promptStore = usePromptStore()
@@ -51,8 +55,12 @@ dataSources.value.forEach((item, index) => {
   if (item.loading)
     updateChatSome(+uuid, index, { loading: false })
 })
-
+// 限制免费次数
 function handleSubmit() {
+  if (unref(userInfo).tmp_count === UserPermissionConfig.chatCount && unref(userInfo).role === 'tmp') {
+    showPayment.value = true
+    return
+  }
   onConversation()
 }
 
@@ -153,6 +161,8 @@ async function onConversation() {
     }
 
     await fetchChatAPIOnce()
+    // 重新获取一下用户信息刷新次数
+    useUserStore().getUserInfo()
   }
   catch (error: any) {
     const errorMessage = error?.message ?? t('common.wrong')
@@ -557,4 +567,5 @@ onUnmounted(() => {
       </div>
     </footer>
   </div>
+  <Payment :visible="showPayment" />
 </template>
