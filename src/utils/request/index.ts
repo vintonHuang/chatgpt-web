@@ -4,10 +4,10 @@
  * @Description: file content
  */
 import type { AxiosProgressEvent, AxiosResponse, GenericAbortSignal } from 'axios'
-// import { useMessage } from 'naive-ui'
+import { useMessage } from 'naive-ui'
 import request from './axios'
-import { useAuthStore } from '@/store'
-// const ms = useMessage()
+import { useAuthStore, useUserStore } from '@/store'
+const ms = useMessage()
 export interface HttpOption {
   url: string
   data?: any
@@ -30,12 +30,14 @@ function http<T = any>(
 ) {
   const successHandler = (res: AxiosResponse<Response<T>>) => {
     const authStore = useAuthStore()
-
+    const userStore = useUserStore()
     if (res.data.status === 200 || typeof res.data === 'string')
       return res.data
-    if (res.data.status === 401)
-      // alert('用户登录过期，请重新登录')
+    if (res.data.status === 401) {
+      ms.error('用户登录过期，请重新登录')
       authStore.removeToken()
+      userStore.removeLocalUser()
+    }
     return Promise.reject(res.data)
   }
 

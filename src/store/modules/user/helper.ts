@@ -26,7 +26,7 @@ export function defaultSetting(): UserState {
     userInfo: {
       avatar: 'https://raw.githubusercontent.com/Chanzhaoyu/chatgpt-web/main/src/assets/avatar.jpg',
       name: 'AI chatBot',
-      description: 'By gpt-3.5-turbo',
+      description: 'gpt-3.5-turbo',
       phone: '',
       role: '',
       tmp_count: 0,
@@ -42,4 +42,8 @@ export function getLocalState(): UserState {
 
 export function setLocalState(setting: UserState): void {
   ss.set(LOCAL_NAME, setting)
+}
+
+export function removeLocalState(): void {
+  ss.remove(LOCAL_NAME)
 }
