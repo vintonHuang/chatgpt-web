@@ -5,7 +5,7 @@ export interface ILoginParams {
 }
 export function getSMScode<T>(phone: string) {
   return get<T>({
-    url: '/user/sms_code',
+    url: import.meta.env.VITE_ENVIRONMENT_ENV === 'PRO' ? '/user/sms_code' : '/user/mock_sms_code',
     data: { phone },
   })
 }

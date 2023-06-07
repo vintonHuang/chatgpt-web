@@ -99,7 +99,7 @@ const handleFinish = () => {
             </template>
           </NInput>
           <NButton color="#8a2be2" style="margin-left:10px" :disabled="active" @click="handleSendSms">
-            <NCountdown v-if="active" ref="countdown" :duration="300 * 1000" :active="active" :render="renderCountdown" :on-finish="handleFinish" />
+            <NCountdown v-if="active" ref="countdown" :duration="60 * 1000" :active="active" :render="renderCountdown" :on-finish="handleFinish" />
             <span v-else>发送验证码</span>
           </NButton>
         </div>

@@ -12,9 +12,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build:sit": "run-p type-check build-sit",
+    "build:pro": "run-p type-check build-pro",
+    "build-sit": "vite build --mode sit",
+    "build-pro": "vite build",
     "preview": "vite preview",
-    "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
