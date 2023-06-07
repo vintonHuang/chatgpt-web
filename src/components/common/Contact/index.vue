@@ -14,6 +14,7 @@ interface Emit {
 interface Props {
   visible: boolean
 }
+
 const show = computed({
   get() {
     return props.visible
@@ -27,7 +28,7 @@ const show = computed({
 <template>
   <NModal v-model:show="show" style="width: 90%; max-width: 640px" preset="card">
     <div class="p-10 bg-white rounded dark:bg-slate-800">
-      支付渠道
+      联系我们
     </div>
   </NModal>
 </template>

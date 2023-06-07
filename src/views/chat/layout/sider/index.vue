@@ -6,18 +6,20 @@
 <script setup lang='ts'>
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
-import { NButton, NLayoutSider, useNotification } from 'naive-ui'
+import { NButton, NIcon, NLayoutSider, useNotification } from 'naive-ui'
+import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { PromptStore } from '@/components/common'
+import { Contact, PromptStore } from '@/components/common'
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
 const notification = useNotification()
 const { isMobile } = useBasicLayout()
 const show = ref(false)
+const showContact = ref(false)
 
 const collapsed = computed(() => appStore.siderCollapsed)
 
@@ -92,11 +94,33 @@ watch(
         <div class="flex-1 min-h-0 pb-4 overflow-hidden">
           <List />
         </div>
-        <div class="p-4 flex justify-around">
-          <NButton @click="show = true">
-            {{ $t('store.siderButton') }}
+        <div class="p-1 flex justify-around">
+          <NButton block color="#8a2be2" @click="showContact = true">
+            <template #icon>
+              <NIcon>
+                <CallOutIcon />
+              </NIcon>
+            </template>
+            联系我们
           </NButton>
-          <NButton class="mt-1" @click="handlePluginStore">
+        </div>
+        <div class="p-1 flex justify-around">
+          <NButton block color="#ff69b4" @click="show = true">
+            <template #icon>
+              <NIcon>
+                <AccessIcon />
+              </NIcon>
+            </template>
+            AI 角色商店
+          </NButton>
+        </div>
+        <div class="p-1 flex justify-around">
+          <NButton block type="warning" @click="handlePluginStore">
+            <template #icon>
+              <NIcon>
+                <PaperIcon />
+              </NIcon>
+            </template>
             插件商店
           </NButton>
         </div>
@@ -108,4 +132,5 @@ watch(
     <div v-show="!collapsed" class="fixed inset-0 z-40 w-full h-full bg-black/40" @click="handleUpdateCollapsed" />
   </template>
   <PromptStore v-model:visible="show" />
+  <Contact v-model:visible="showContact" />
 </template>
