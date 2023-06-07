@@ -7,12 +7,12 @@
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
 import { NButton, NIcon, NLayoutSider, useNotification } from 'naive-ui'
-import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon } from '@vicons/ionicons5'
+import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon, PeopleOutline as PeopleIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { Contact, Payment, PromptStore } from '@/components/common'
+import { Contact, Payment, PromptStore, UserCenter } from '@/components/common'
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
@@ -21,6 +21,7 @@ const { isMobile } = useBasicLayout()
 const show = ref(false)
 const showContact = ref(false)
 const showPayment = ref(false)
+const showUserCenter = ref(false)
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
@@ -94,45 +95,57 @@ watch(
         <div class="flex-1 min-h-0 pb-4 overflow-hidden">
           <List />
         </div>
-        <div class="p-1 flex justify-around">
-          <NButton block color="#8a2be2" @click="showContact = true">
-            <template #icon>
-              <NIcon>
-                <CallOutIcon />
-              </NIcon>
-            </template>
-            联系我们
-          </NButton>
-        </div>
-        <div class="p-1 flex justify-around">
-          <NButton block color="#ff69b4" @click="show = true">
-            <template #icon>
-              <NIcon>
-                <AccessIcon />
-              </NIcon>
-            </template>
-            AI 角色商店
-          </NButton>
-        </div>
-        <div class="p-1 flex justify-around">
-          <NButton block type="warning" @click="handlePluginStore">
-            <template #icon>
-              <NIcon>
-                <PaperIcon />
-              </NIcon>
-            </template>
-            插件商店
-          </NButton>
-        </div>
-        <div class="p-1 flex justify-around">
-          <NButton block ghost color="#8a2be2" @click="showPayment = true">
-            <template #icon>
-              <NIcon>
-                <PayIcon />
-              </NIcon>
-            </template>
-            购买套餐
-          </NButton>
+        <div>
+          <div class="p-1 flex justify-around">
+            <NButton block color="#8a2be2" @click="showContact = true">
+              <template #icon>
+                <NIcon>
+                  <CallOutIcon />
+                </NIcon>
+              </template>
+              联系我们
+            </NButton>
+          </div>
+          <div class="p-1 flex justify-around">
+            <NButton block color="#66CDAA" @click="showPayment = true">
+              <template #icon>
+                <NIcon>
+                  <PayIcon />
+                </NIcon>
+              </template>
+              购买套餐
+            </NButton>
+          </div>
+          <div class="p-1 flex justify-around">
+            <NButton block ghost color="#ff69b4" @click="show = true">
+              <template #icon>
+                <NIcon>
+                  <AccessIcon />
+                </NIcon>
+              </template>
+              AI 角色商店
+            </NButton>
+          </div>
+          <div class="p-1 flex justify-around">
+            <NButton block ghost type="warning" @click="handlePluginStore">
+              <template #icon>
+                <NIcon>
+                  <PaperIcon />
+                </NIcon>
+              </template>
+              插件商店
+            </NButton>
+          </div>
+          <div class="p-1 flex justify-around">
+            <NButton block ghost color="#008B8B" @click="showUserCenter = true">
+              <template #icon>
+                <NIcon>
+                  <PeopleIcon />
+                </NIcon>
+              </template>
+              用户中心
+            </NButton>
+          </div>
         </div>
       </main>
       <Footer />
@@ -144,4 +157,5 @@ watch(
   <PromptStore v-model:visible="show" />
   <Contact v-model:visible="showContact" />
   <Payment v-model:visible="showPayment" />
+  <UserCenter v-model:visible="showUserCenter" />
 </template>
