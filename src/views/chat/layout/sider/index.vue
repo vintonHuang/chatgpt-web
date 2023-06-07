@@ -7,12 +7,12 @@
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
 import { NButton, NIcon, NLayoutSider, useNotification } from 'naive-ui'
-import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon } from '@vicons/ionicons5'
+import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { Contact, PromptStore } from '@/components/common'
+import { Contact, Payment, PromptStore } from '@/components/common'
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
@@ -20,7 +20,7 @@ const notification = useNotification()
 const { isMobile } = useBasicLayout()
 const show = ref(false)
 const showContact = ref(false)
-
+const showPayment = ref(false)
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
@@ -124,6 +124,16 @@ watch(
             插件商店
           </NButton>
         </div>
+        <div class="p-1 flex justify-around">
+          <NButton block ghost color="#8a2be2" @click="showPayment = true">
+            <template #icon>
+              <NIcon>
+                <PayIcon />
+              </NIcon>
+            </template>
+            购买套餐
+          </NButton>
+        </div>
       </main>
       <Footer />
     </div>
@@ -133,4 +143,5 @@ watch(
   </template>
   <PromptStore v-model:visible="show" />
   <Contact v-model:visible="showContact" />
+  <Payment v-model:visible="showPayment" />
 </template>

@@ -10,5 +10,6 @@ import UserAvatar from './UserAvatar/index.vue'
 import Setting from './Setting/index.vue'
 import PromptStore from './PromptStore/index.vue'
 import Contact from './Contact/index.vue'
+import Payment from './Payment/index.vue'
 
-export { HoverButton, NaiveProvider, SvgIcon, UserAvatar, Setting, PromptStore, Contact }
+export { HoverButton, NaiveProvider, SvgIcon, UserAvatar, Setting, PromptStore, Contact, Payment }
