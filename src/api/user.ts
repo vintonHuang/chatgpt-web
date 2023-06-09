@@ -22,3 +22,9 @@ export function getUesInfo<T>() {
     url: '/user/info',
   })
 }
+
+export function logout<T>() {
+  return post<T>({
+    url: '/user/logout',
+  })
+}

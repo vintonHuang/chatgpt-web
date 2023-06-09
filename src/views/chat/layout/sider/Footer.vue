@@ -9,11 +9,13 @@ import { LogOutOutline as LoginIcon } from '@vicons/ionicons5'
 import { NButton, NIcon, NPopconfirm } from 'naive-ui'
 import { HoverButton, SvgIcon, UserAvatar } from '@/components/common'
 import { useAuthStore, useUserStore } from '@/store'
+import { logout } from '@/api/user'
 const Setting = defineAsyncComponent(() => import('@/components/common/Setting/index.vue'))
 const authStore = useAuthStore()
 const userStore = useUserStore()
 const show = ref(false)
 const handleLogout = () => {
+  logout()
   authStore.removeToken()
   userStore.removeLocalUser()
 }
