@@ -7,12 +7,12 @@
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
 import { NButton, NIcon, NLayoutSider, useNotification } from 'naive-ui'
-import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon, PeopleOutline as PeopleIcon } from '@vicons/ionicons5'
+import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon, PeopleOutline as PeopleIcon, PersonAddOutline as PersonIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
-import { Contact, Payment, PromptStore, UserCenter } from '@/components/common'
+import { Contact, Invitation, Payment, PromptStore, UserCenter } from '@/components/common'
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
@@ -22,6 +22,7 @@ const show = ref(false)
 const showContact = ref(false)
 const showPayment = ref(false)
 const showUserCenter = ref(false)
+const showInvite = ref(false)
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
@@ -137,6 +138,16 @@ watch(
             </NButton>
           </div>
           <div class="p-1 flex justify-around">
+            <NButton block ghost color="#2E8B57" @click="showInvite = true">
+              <template #icon>
+                <NIcon>
+                  <PersonIcon />
+                </NIcon>
+              </template>
+              邀请好友
+            </NButton>
+          </div>
+          <div class="p-1 flex justify-around">
             <NButton block ghost color="#008B8B" @click="showUserCenter = true">
               <template #icon>
                 <NIcon>
@@ -158,4 +169,5 @@ watch(
   <Contact v-model:visible="showContact" />
   <Payment v-model:visible="showPayment" />
   <UserCenter v-model:visible="showUserCenter" />
+  <Invitation v-model:visible="showInvite" />
 </template>

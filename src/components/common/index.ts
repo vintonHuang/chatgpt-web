@@ -12,5 +12,6 @@ import PromptStore from './PromptStore/index.vue'
 import Contact from './Contact/index.vue'
 import Payment from './Payment/index.vue'
 import UserCenter from './UserCenter/index.vue'
+import Invitation from './Invitation/index.vue'
 
-export { HoverButton, NaiveProvider, SvgIcon, UserAvatar, Setting, PromptStore, Contact, Payment, UserCenter }
+export { HoverButton, NaiveProvider, SvgIcon, UserAvatar, Setting, PromptStore, Contact, Payment, UserCenter, Invitation }
