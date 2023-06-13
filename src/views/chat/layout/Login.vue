@@ -107,6 +107,9 @@ const handleFinish = () => {
           登录
         </NButton>
       </div>
+      <div class="text-center">
+        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">服务协议</a>和<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">隐私保护指引</a>
+      </div>
     </div>
   </NModal>
 </template>

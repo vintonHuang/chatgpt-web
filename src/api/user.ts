@@ -1,3 +1,8 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-06-09 10:06:42
+ * @Description: file content
+ */
 import { get, post } from '@/utils/request'
 export interface ILoginParams {
   phone: string
@@ -26,5 +31,17 @@ export function getUesInfo<T>() {
 export function logout<T>() {
   return post<T>({
     url: '/user/logout',
+  })
+}
+
+export function getOrders<T>() {
+  return get<T>({
+    url: '/user/orders',
+  })
+}
+// 获取当前的售卖套餐
+export function getVipProducts<T>() {
+  return get<T>({
+    url: '/vip/products',
   })
 }

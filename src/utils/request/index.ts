@@ -4,10 +4,8 @@
  * @Description: file content
  */
 import type { AxiosProgressEvent, AxiosResponse, GenericAbortSignal } from 'axios'
-import { useMessage } from 'naive-ui'
 import request from './axios'
 import { useAuthStore, useUserStore } from '@/store'
-const ms = useMessage()
 export interface HttpOption {
   url: string
   data?: any
@@ -34,7 +32,6 @@ function http<T = any>(
     if (res.data.status === 200 || typeof res.data === 'string')
       return res.data
     if (res.data.status === 401) {
-      ms.error('用户登录过期，请重新登录')
       authStore.removeToken()
       userStore.removeLocalUser()
     }
