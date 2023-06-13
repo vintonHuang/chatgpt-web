@@ -1,3 +1,8 @@
+/*
+ * @Author: Vinton
+ * @Date: 2023-05-31 11:10:31
+ * @Description: file content
+ */
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { computed, watch } from 'vue'
 import { darkTheme, useOsTheme } from 'naive-ui'
@@ -22,10 +27,16 @@ export function useTheme() {
   const themeOverrides = computed<GlobalThemeOverrides>(() => {
     if (isDark.value) {
       return {
-        common: {},
+        common: {
+        },
       }
     }
-    return {}
+    return {
+      common: {
+        primaryColor: '#01228FFF',
+        primaryColorHover: '#01228FFF',
+      },
+    }
   })
 
   watch(
