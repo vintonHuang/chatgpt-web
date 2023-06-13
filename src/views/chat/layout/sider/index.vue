@@ -6,7 +6,7 @@
 <script setup lang='ts'>
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
-import { NButton, NIcon, NLayoutSider, useNotification } from 'naive-ui'
+import { NButton, NIcon, NLayoutSider } from 'naive-ui'
 import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon, PeopleOutline as PeopleIcon, PersonAddOutline as PersonIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
@@ -16,7 +16,6 @@ import { Contact, Invitation, Payment, PromptStore, UserCenter } from '@/compone
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
-const notification = useNotification()
 const { isMobile } = useBasicLayout()
 const show = ref(false)
 const showContact = ref(false)
@@ -36,7 +35,7 @@ function handleUpdateCollapsed() {
 }
 
 function handlePluginStore() {
-  notification.warning({
+  window.$notification?.warning({
     title: '插件商店',
     content: '插件内容正在开发中,尽情期待',
     duration: 2000,
