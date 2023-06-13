@@ -4,7 +4,7 @@
  * @Description: file content
 -->
 <script setup lang='ts'>
-import { NModal } from 'naive-ui'
+import { NImage, NModal } from 'naive-ui'
 import { computed } from 'vue'
 const props = defineProps<Props>()
 const emit = defineEmits<Emit>()
@@ -23,12 +23,19 @@ const show = computed({
     emit('update:visible', visible)
   },
 })
+function getImageUrl(name: string) {
+  return new URL(`../../../assets/${name}`, import.meta.url).href
+}
 </script>
 
 <template>
-  <NModal v-model:show="show" style="width: 90%; max-width: 640px" preset="card">
-    <div class="p-10 bg-white rounded dark:bg-slate-800">
-      联系我们
+  <NModal v-model:show="show" style="max-width: 350px" preset="card">
+    <div class=" bg-white rounded dark:bg-slate-800">
+      <p>扫码添加客服，如有任何使用疑问，跟客服沟通</p>
+      <NImage
+        width="200"
+        :src="getImageUrl('wechat.jpeg')"
+      />
     </div>
   </NModal>
 </template>
