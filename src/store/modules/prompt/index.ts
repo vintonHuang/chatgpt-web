@@ -14,10 +14,11 @@ export const usePromptStore = defineStore('prompt-store', {
   actions: {
     updatePromptList(promptList: PromptList) {
       this.$patch({ promptList })
-      setLocalPromptList({ ...this.$state, promptList })
+      this.$state.cacheCategoryList[this.$state.selectIndex] = promptList
+      setLocalPromptList({ ...this.$state })
     },
-    updateSelectIndex(index: number) {
-      this.$state.selectIndex = index
+    updateSelectIndex(selectIndex: number) {
+      this.$patch({ selectIndex })
       setLocalPromptList({ ...this.$state })
     },
     getPromptList() {
@@ -34,15 +35,17 @@ export const usePromptStore = defineStore('prompt-store', {
       this.updateSelectIndex(scene_id)
       // eslint-disable-next-line no-prototype-builtins
       if (this.$state.cacheCategoryList.hasOwnProperty(scene_id)) {
-        this.$state.promptList = this.$state.cacheCategoryList[scene_id]
+        this.$patch({ promptList: this.$state.cacheCategoryList[scene_id] })
         return
       }
       const { data } = await getSceneDetail<sceneItem[]>(scene_id)
-      this.$state.promptList = data.map((item) => {
-        return {
-          key: item.title,
-          value: item.question,
-        }
+      this.$patch({
+        promptList: data.map((item) => {
+          return {
+            key: item.title,
+            value: item.question,
+          }
+        }),
       })
       if (data.length > 0)
         this.$state.cacheCategoryList[scene_id] = this.$state.promptList

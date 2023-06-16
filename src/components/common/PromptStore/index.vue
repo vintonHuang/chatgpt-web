@@ -341,13 +341,13 @@ const renderTemplate = () => {
 //   ]
 // }
 
-// watch(
-//   () => promptList,
-//   () => {
-//     promptStore.updatePromptList(promptList.value)
-//   },
-//   { deep: true },
-// )
+watch(
+  () => promptList,
+  () => {
+    promptStore.updatePromptList(promptList.value)
+  },
+  { deep: true },
+)
 
 const dataSource = computed(() => {
   const data = renderTemplate()
