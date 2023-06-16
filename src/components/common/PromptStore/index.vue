@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia'
 import {
   NButton,
   NCard,
-  NDivider,
   NInput,
   NList,
   NListItem,
@@ -16,8 +15,6 @@ import {
   NThing,
   useMessage,
 } from 'naive-ui'
-import PromptRecommend from '../../../assets/recommend.json'
-import { SvgIcon } from '..'
 import { usePromptStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import { t } from '@/locales'
@@ -50,7 +47,7 @@ const show = computed({
 
 const showModal = ref(false)
 
-const importLoading = ref(false)
+// const importLoading = ref(false)
 const exportLoading = ref(false)
 
 const searchValue = ref<string>('')
@@ -61,7 +58,7 @@ const promptStore = usePromptStore()
 const { promptList } = storeToRefs(usePromptStore())
 
 // Prompt在线导入推荐List,根据部署者喜好进行修改(assets/recommend.json)
-const promptRecommendList = PromptRecommend
+// const promptRecommendList = PromptRecommend
 // const promptList = ref<any>(promptStore.promptList)
 
 // 用于添加修改的临时prompt参数
@@ -97,11 +94,11 @@ const changeShowModal = (
 }
 
 // 在线导入相关
-const downloadURL = ref('')
-const downloadDisabled = computed(() => downloadURL.value.trim().length < 1)
-const setDownloadURL = (url: string) => {
-  downloadURL.value = url
-}
+// const downloadURL = ref('')
+// const downloadDisabled = computed(() => downloadURL.value.trim().length < 1)
+// const setDownloadURL = (url: string) => {
+//   downloadURL.value = url
+// }
 
 // 控制 input 按钮
 const inputStatus = computed(
@@ -237,33 +234,33 @@ const exportPromptTemplate = () => {
 }
 
 // 模板在线导入
-const downloadPromptTemplate = async () => {
-  try {
-    importLoading.value = true
-    const response = await fetch(downloadURL.value)
-    const jsonData = await response.json()
-    if ('key' in jsonData[0] && 'value' in jsonData[0])
-      tempPromptValue.value = JSON.stringify(jsonData)
-    if ('act' in jsonData[0] && 'prompt' in jsonData[0]) {
-      const newJsonData = jsonData.map((item: { act: string; prompt: string }) => {
-        return {
-          key: item.act,
-          value: item.prompt,
-        }
-      })
-      tempPromptValue.value = JSON.stringify(newJsonData)
-    }
-    importPromptTemplate()
-    downloadURL.value = ''
-  }
-  catch {
-    message.error(t('store.downloadError'))
-    downloadURL.value = ''
-  }
-  finally {
-    importLoading.value = false
-  }
-}
+// const downloadPromptTemplate = async () => {
+//   try {
+//     importLoading.value = true
+//     const response = await fetch(downloadURL.value)
+//     const jsonData = await response.json()
+//     if ('key' in jsonData[0] && 'value' in jsonData[0])
+//       tempPromptValue.value = JSON.stringify(jsonData)
+//     if ('act' in jsonData[0] && 'prompt' in jsonData[0]) {
+//       const newJsonData = jsonData.map((item: { act: string; prompt: string }) => {
+//         return {
+//           key: item.act,
+//           value: item.prompt,
+//         }
+//       })
+//       tempPromptValue.value = JSON.stringify(newJsonData)
+//     }
+//     importPromptTemplate()
+//     downloadURL.value = ''
+//   }
+//   catch {
+//     message.error(t('store.downloadError'))
+//     downloadURL.value = ''
+//   }
+//   finally {
+//     importLoading.value = false
+//   }
+// }
 
 // 移动端自适应相关
 const renderTemplate = () => {
@@ -378,7 +375,7 @@ const changeTab = async (value: number) => {
   <NModal v-model:show="show" style="width: 90%; max-width: 1400px" preset="card">
     <div class="space-y-4">
       <NTabs type="segment">
-        <NTabPane name="local" :tab="$t('store.local')">
+        <NTabPane name="local" tab="角色商店">
           <div
             class="flex gap-3 mb-4"
             :class="[isMobile ? 'flex-col' : 'flex-row justify-between']"
@@ -465,7 +462,7 @@ const changeTab = async (value: number) => {
             </NListItem>
           </NList>
         </NTabPane>
-        <NTabPane name="download" :tab="$t('store.online')">
+        <!-- <NTabPane name="download" :tab="$t('store.online')">
           <p class="mb-4">
             {{ $t("store.onlineImportWarning") }}
           </p>
@@ -510,7 +507,7 @@ const changeTab = async (value: number) => {
               </template>
             </NCard>
           </div>
-        </NTabPane>
+        </NTabPane> -->
       </NTabs>
     </div>
   </NModal>
