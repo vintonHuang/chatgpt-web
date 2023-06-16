@@ -9,7 +9,7 @@ import type { CountdownInst, CountdownProps } from 'naive-ui'
 import { NButton, NCountdown, NIcon, NInput, NModal, useMessage } from 'naive-ui'
 import { PhonePortraitOutline, ReturnUpForwardOutline, Rocket } from '@vicons/ionicons5'
 import { getSMScode, login } from '@/api/user'
-import { useAuthStore, useUserStore } from '@/store'
+import { useAuthStore, usePromptStore, useUserStore } from '@/store'
 import Icon403 from '@/icons/403.vue'
 import { isPhoneNumber } from '@/utils/is'
 interface Props {
@@ -42,6 +42,7 @@ async function handleVerify() {
     ms.success('登录成功')
     // 获取用户信息
     useUserStore().getUserInfo()
+    usePromptStore().getCategoryScene()
   }
   catch (error: any) {
     ms.error(error.message ?? 'error')
@@ -108,7 +109,7 @@ const handleFinish = () => {
         </NButton>
       </div>
       <div class="text-center">
-        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">服务协议</a>和<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">隐私保护指引</a>
+        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">服务协议和隐私保护指引</a>
       </div>
     </div>
   </NModal>
