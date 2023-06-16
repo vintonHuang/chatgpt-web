@@ -109,7 +109,7 @@ const handleFinish = () => {
         </NButton>
       </div>
       <div class="text-center">
-        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="http://www.baidu.com" target="_blank">服务协议和隐私保护指引</a>
+        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="/public/隐私政策与使用条款.docx" target="_blank">服务协议和隐私保护指引</a>
       </div>
     </div>
   </NModal>
