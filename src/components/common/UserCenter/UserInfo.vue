@@ -20,7 +20,7 @@ const handleBindPhone = () => {
     <div class="flex items-center space-x-4">
       <span class="flex-shrink-0 w-[100px]">电话:</span>
       <div class="flex-1">
-        <NInput v-model:value="userStore.userInfo.phone" placeholder="请绑定手机号码" />
+        <NInput v-model:value="userStore.userInfo.phone" :disabled="true" placeholder="请绑定手机号码" />
       </div>
       <NButton size="tiny" text type="primary" @click="handleBindPhone">
         绑定手机
