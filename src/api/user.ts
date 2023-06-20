@@ -5,8 +5,11 @@
  */
 import { get, post } from '@/utils/request'
 export interface ILoginParams {
-  phone: string
-  sms: string
+  type: 'sms' | 'upt'
+  phone?: string
+  sms?: string
+  username?: string
+  password?: string
 }
 export function getSMScode<T>(phone: string) {
   return get<T>({
