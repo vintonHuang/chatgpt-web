@@ -7,7 +7,7 @@
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
 import { NButton, NIcon, NLayoutSider } from 'naive-ui'
-import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, LogoPaypal as PayIcon, PeopleOutline as PeopleIcon, PersonAddOutline as PersonIcon } from '@vicons/ionicons5'
+import { AccessibilityOutline as AccessIcon, CallOutline as CallOutIcon, PaperPlaneOutline as PaperIcon, PeopleOutline as PeopleIcon } from '@vicons/ionicons5'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import { useAppStore, useChatStore } from '@/store'
@@ -106,7 +106,7 @@ watch(
               联系我们
             </NButton>
           </div>
-          <div class="p-1 flex justify-around">
+          <!-- <div class="p-1 flex justify-around">
             <NButton block color="#66CDAA" @click="showPayment = true">
               <template #icon>
                 <NIcon>
@@ -115,7 +115,7 @@ watch(
               </template>
               购买套餐
             </NButton>
-          </div>
+          </div> -->
           <div class="p-1 flex justify-around">
             <NButton block ghost color="#ff69b4" @click="show = true">
               <template #icon>
@@ -136,7 +136,7 @@ watch(
               插件商店
             </NButton>
           </div>
-          <div class="p-1 flex justify-around">
+          <!-- <div class="p-1 flex justify-around">
             <NButton block ghost color="#2E8B57" @click="showInvite = true">
               <template #icon>
                 <NIcon>
@@ -145,7 +145,7 @@ watch(
               </template>
               邀请好友
             </NButton>
-          </div>
+          </div> -->
           <div class="p-1 flex justify-around">
             <NButton block ghost color="#008B8B" @click="showUserCenter = true">
               <template #icon>

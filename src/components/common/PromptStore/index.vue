@@ -372,10 +372,10 @@ const changeTab = async (value: number) => {
 </script>
 
 <template>
-  <NModal v-model:show="show" style="width: 90%; max-width: 1400px" preset="card">
+  <NModal v-model:show="show" style="width: 90%; max-width: 1400px" title="角色商店" preset="card">
     <div class="space-y-4">
       <NTabs type="segment">
-        <NTabPane name="local" tab="角色商店">
+        <NTabPane name="local" tab="当前选中的tab分类，可以在输入框的时候自动获取分类角色">
           <div
             class="flex gap-3 mb-4"
             :class="[isMobile ? 'flex-col' : 'flex-row justify-between']"
@@ -403,9 +403,9 @@ const changeTab = async (value: number) => {
                 {{ $t("store.clearStoreConfirm") }}
               </NPopconfirm>
             </div>
-            <div class="flex items-center">
+            <!-- <div class="flex items-center">
               <NInput v-model:value="searchValue" style="width: 100%" />
-            </div>
+            </div> -->
           </div>
           <NTabs
             v-if="!isMobile"

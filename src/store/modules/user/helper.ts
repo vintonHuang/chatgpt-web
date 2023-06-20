@@ -15,6 +15,8 @@ export interface UserInfo {
   role: string
   tmp_count: number
   user_name: string
+  expire_time: string
+  invitation_code: string
 }
 
 export interface UserState {
@@ -31,6 +33,8 @@ export function defaultSetting(): UserState {
       role: '',
       tmp_count: 0,
       user_name: '',
+      expire_time: '',
+      invitation_code: '',
     },
   }
 }
