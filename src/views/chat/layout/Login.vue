@@ -118,7 +118,10 @@ const handleFinish = () => {
                 <NIcon :component="PeopleOutline" />
               </template>
             </NInput>
-            <NInput v-model:value="password" class="mt-3 mb-3" placeholder="密码">
+            <NInput
+              v-model:value="password" type="password"
+              show-password-on="mousedown" class="mt-3 mb-3" placeholder="密码"
+            >
               <template #prefix>
                 <NIcon :component="BarcodeOutline" />
               </template>
