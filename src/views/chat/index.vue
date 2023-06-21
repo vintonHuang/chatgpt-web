@@ -56,7 +56,7 @@ dataSources.value.forEach((item, index) => {
 })
 // 限制免费次数
 function handleSubmit() {
-  if (unref(userInfo).tmp_count === UserPermissionConfig.chatCount && unref(userInfo).role === 'tmp') {
+  if (unref(userInfo).tmp_count === UserPermissionConfig.chatCount && unref(userInfo).role === 'exp') {
     showPayment.value = true
     return
   }
@@ -566,5 +566,5 @@ onUnmounted(() => {
       </div>
     </footer>
   </div>
-  <Payment :visible="showPayment" />
+  <Payment v-model:visible="showPayment" />
 </template>
