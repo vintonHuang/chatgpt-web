@@ -47,7 +47,7 @@ export default defineConfig((env) => {
           rewrite: path => path.replace('/api/', '/'),
         },
         '/backend': {
-          target: 'http://43.130.39.13:8888/',
+          target: 'http://119.91.210.216:8888/',
           changeOrigin: true, // 允许跨域
           // rewrite: path => path.replace('/backend/', '/'),
         },

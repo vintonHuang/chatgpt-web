@@ -5,14 +5,11 @@ import {
   NButton,
   NCard,
   NInput,
-  NList,
-  NListItem,
   NModal,
   NPopconfirm,
   NSpace,
   NTabPane,
   NTabs,
-  NThing,
   useMessage,
 } from 'naive-ui'
 import { usePromptStore } from '@/store'
@@ -408,7 +405,6 @@ const changeTab = async (value: number) => {
             </div> -->
           </div>
           <NTabs
-            v-if="!isMobile"
             :on-update:value="changeTab"
             :value="promptStore.selectIndex"
           >
@@ -436,7 +432,7 @@ const changeTab = async (value: number) => {
               </div>
             </NTabPane>
           </NTabs>
-          <NList v-if="isMobile" style="max-height: 400px; overflow-y: auto">
+          <!-- <NList v-if="isMobile" style="max-height: 400px; overflow-y: auto">
             <NListItem v-for="(item, index) of dataSource" :key="index">
               <NThing :title="item.renderKey" :description="item.renderValue" />
               <template #suffix>
@@ -460,7 +456,7 @@ const changeTab = async (value: number) => {
                 </div>
               </template>
             </NListItem>
-          </NList>
+          </NList> -->
         </NTabPane>
         <!-- <NTabPane name="download" :tab="$t('store.online')">
           <p class="mb-4">

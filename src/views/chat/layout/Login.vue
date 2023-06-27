@@ -156,8 +156,8 @@ const handleFinish = () => {
           </NTabPane>
         </NTabs>
       </div>
-      <div class="text-center">
-        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="/public/隐私政策与使用条款.docx" target="_blank">服务协议和隐私保护指引</a>
+      <div class="text-center text-[13px]">
+        登录代表您已阅读并同意<a class="text-slate-400 hover:text-blue-600" href="./隐私政策与使用条款.docx" target="_blank">服务协议和隐私保护指引</a>
       </div>
     </div>
   </NModal>
