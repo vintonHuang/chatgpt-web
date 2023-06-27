@@ -31,10 +31,10 @@ function getImageUrl(name: string) {
 <template>
   <NModal v-model:show="show" style="max-width: 350px" preset="card">
     <div class=" bg-white rounded dark:bg-slate-800">
-      <p>扫码添加客服，如有任何使用疑问，跟客服沟通</p>
+      <p>扫码添加在线客服，如有任何使用疑问，遇到什么问题可以客服沟通，我们会及时处理</p>
       <NImage
         width="200"
-        :src="getImageUrl('wechat.jpeg')"
+        :src="getImageUrl('wechat.jpg')"
       />
     </div>
   </NModal>
