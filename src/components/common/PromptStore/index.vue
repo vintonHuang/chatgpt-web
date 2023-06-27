@@ -16,12 +16,12 @@ import { usePromptStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import { t } from '@/locales'
 
-interface DataProps {
-  renderKey: string
-  renderValue: string
-  key: string
-  value: string
-}
+// interface DataProps {
+//   renderKey: string
+//   renderValue: string
+//   key: string
+//   value: string
+// }
 
 interface Props {
   visible: boolean
@@ -47,7 +47,7 @@ const showModal = ref(false)
 // const importLoading = ref(false)
 const exportLoading = ref(false)
 
-const searchValue = ref<string>('')
+// const searchValue = ref<string>('')
 
 // 移动端自适应相关
 const { isMobile } = useBasicLayout()
@@ -154,14 +154,14 @@ const modifyPromptTemplate = () => {
   changeShowModal('modify')
 }
 
-const deletePromptTemplate = (row: { key: string; value: string }) => {
-  promptList.value = [
-    ...promptList.value.filter(
-      (item: { key: string; value: string }) => item.key !== row.key,
-    ),
-  ] as never
-  message.success(t('common.deleteSuccess'))
-}
+// const deletePromptTemplate = (row: { key: string; value: string }) => {
+//   promptList.value = [
+//     ...promptList.value.filter(
+//       (item: { key: string; value: string }) => item.key !== row.key,
+//     ),
+//   ] as never
+//   message.success(t('common.deleteSuccess'))
+// }
 
 const clearPromptTemplate = () => {
   promptList.value = []
@@ -260,22 +260,22 @@ const exportPromptTemplate = () => {
 // }
 
 // 移动端自适应相关
-const renderTemplate = () => {
-  const [keyLimit, valueLimit] = isMobile.value ? [10, 30] : [15, 50]
+// const renderTemplate = () => {
+//   const [keyLimit, valueLimit] = isMobile.value ? [10, 30] : [15, 50]
 
-  return promptList.value.map((item: { key: string; value: string }) => {
-    return {
-      renderKey:
-        item.key.length <= keyLimit ? item.key : `${item.key.substring(0, keyLimit)}...`,
-      renderValue:
-        item.value.length <= valueLimit
-          ? item.value
-          : `${item.value.substring(0, valueLimit)}...`,
-      key: item.key,
-      value: item.value,
-    }
-  })
-}
+//   return promptList.value.map((item: { key: string; value: string }) => {
+//     return {
+//       renderKey:
+//         item.key.length <= keyLimit ? item.key : `${item.key.substring(0, keyLimit)}...`,
+//       renderValue:
+//         item.value.length <= valueLimit
+//           ? item.value
+//           : `${item.value.substring(0, valueLimit)}...`,
+//       key: item.key,
+//       value: item.value,
+//     }
+//   })
+// }
 
 // const pagination = computed(() => {
 //   const [pageSize, pageSlot] = isMobile.value ? [6, 5] : [7, 15]
@@ -343,16 +343,16 @@ watch(
   { deep: true },
 )
 
-const dataSource = computed(() => {
-  const data = renderTemplate()
-  const value = searchValue.value
-  if (value && value !== '') {
-    return data.filter((item: DataProps) => {
-      return item.renderKey.includes(value) || item.renderValue.includes(value)
-    })
-  }
-  return data
-})
+// const dataSource = computed(() => {
+//   const data = renderTemplate()
+//   const value = searchValue.value
+//   if (value && value !== '') {
+//     return data.filter((item: DataProps) => {
+//       return item.renderKey.includes(value) || item.renderValue.includes(value)
+//     })
+//   }
+//   return data
+// })
 // 打开的时候需要重置一下当前的选择卡片
 watch(
   () => show,
