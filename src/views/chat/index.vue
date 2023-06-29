@@ -494,6 +494,7 @@ onUnmounted(() => {
               <p>
                 禁止发布、传播任何违法、违规内容，使用本网站，视您接受并同意 <a target="_blank" style="color:#006eff;" href="https://docs.qq.com/doc/DVFdaY1lvWHFSWU5w">《免责声明》</a>
               </p>
+              <p><a href="https://beian.miit.gov.cn/" style="color:#006eff;" target="_blank">闽ICP备2023009641号</a></p>
             </div>
           </template>
           <template v-else>
