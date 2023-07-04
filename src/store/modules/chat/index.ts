@@ -93,8 +93,8 @@ export const useChatStore = defineStore('chat-store', {
     },
 
     addChatByUuid(uuid: number, chat: Chat.Chat) {
-      // 当前没有聊天框内容的时候，需要在输入内容的时候添加一个聊天框
       if (!uuid || uuid === 0) {
+      // 当前没有聊天框内容的时候，需要在输入内容的时候添加一个聊天框
         if (this.history.length === 0) {
           const uuid = Date.now()
           this.history.push({ uuid, title: chat.text, isEdit: false })

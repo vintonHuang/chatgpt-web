@@ -29,7 +29,7 @@ function getImageUrl(name: string) {
 </script>
 
 <template>
-  <NModal v-model:show="show" style="max-width: 350px" preset="card">
+  <NModal v-model:show="show" style="max-width: 350px" title="联系我们" preset="card">
     <div class=" bg-white rounded dark:bg-slate-800">
       <p>扫码添加在线客服，如有任何使用疑问，遇到什么问题可以客服沟通，我们会及时处理</p>
       <NImage

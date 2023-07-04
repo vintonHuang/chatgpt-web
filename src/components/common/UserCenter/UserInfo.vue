@@ -1,13 +1,17 @@
-<script setup lang='ts'>
+<!--
+ * @Author: Vinton
+ * @Date: 2023-06-20 11:44:33
+ * @Description: file content
+-->
+<script setup lang="ts">
 import { NButton, NInput } from 'naive-ui'
+import { ref } from 'vue'
+import BindPhone from '../BindPhone/index.vue'
 import { useUserStore } from '@/store'
 const userStore = useUserStore()
+const showBindPhone = ref(false)
 const handleBindPhone = () => {
-  window.$notification?.warning({
-    title: '绑定失败',
-    content: '绑定手机正在开发中,尽情期待',
-    duration: 2000,
-  })
+  showBindPhone.value = true
 }
 </script>
 
@@ -22,7 +26,7 @@ const handleBindPhone = () => {
       <div class="flex-1">
         <NInput v-model:value="userStore.userInfo.phone" :disabled="true" placeholder="请绑定手机号码" />
       </div>
-      <NButton size="tiny" text type="primary" @click="handleBindPhone">
+      <NButton size="tiny" text type="primary" :disabled="userStore.userInfo.is_bind_phone" @click="handleBindPhone">
         绑定手机
       </NButton>
     </div>
@@ -31,7 +35,7 @@ const handleBindPhone = () => {
       <span class="flex-shrink-0">{{ userStore.userInfo.expire_time }}</span>
     </div>
   </div>
+  <BindPhone v-model:visible="showBindPhone" />
 </template>
 
-<style scoped lang='less'>
-</style>
+<style scoped lang="less"></style>

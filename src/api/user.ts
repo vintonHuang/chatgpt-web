@@ -48,3 +48,13 @@ export function getVipProducts<T>() {
     url: '/vip/products',
   })
 }
+
+export function updatePhone<T>(data: {
+  phone: string
+  sms: string
+}) {
+  return post<T>({
+    url: '/user/bind_phone',
+    data,
+  })
+}

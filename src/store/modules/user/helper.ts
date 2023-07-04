@@ -17,6 +17,7 @@ export interface UserInfo {
   user_name: string
   expire_time: string
   invitation_code: string
+  is_bind_phone: boolean
 }
 
 export interface UserState {
@@ -35,6 +36,7 @@ export function defaultSetting(): UserState {
       user_name: '',
       expire_time: '',
       invitation_code: '',
+      is_bind_phone: false,
     },
   }
 }

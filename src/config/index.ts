@@ -5,7 +5,7 @@
  */
 const baseUrlApi = {
   '/api': ['/chat', '/config', '/chat-process', '/session'],
-  '/backend': ['/user/login', '/user/sms_code', '/user/info', '/user/mock_sms_code', '/user/logout', '/user/orders', '/vip/products', '/help/scene_type', '/help/scene_detail'],
+  '/backend': ['/user/login', '/user/sms_code', '/user/info', '/user/mock_sms_code', '/user/logout', '/user/orders', '/vip/products', '/help/scene_type', '/help/scene_detail', '/user/bind_phone'],
 }
 const UserPermissionConfig = {
   chatCount: 10, // 用户聊天免费次数的配置
