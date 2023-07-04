@@ -29,7 +29,7 @@ export function defaultSetting(): UserState {
     userInfo: {
       avatar: 'https://raw.githubusercontent.com/Chanzhaoyu/chatgpt-web/main/src/assets/avatar.jpg',
       name: 'AI chatBot',
-      description: 'gpt-3.5-turbo',
+      description: '人工智能模型',
       phone: '',
       role: '',
       tmp_count: 0,
